@@ -2341,7 +2341,7 @@
                                  <p class='ver ${color}'>Verification Status: ${it.verified} 
                                  <br class='there'> - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p
                                  <br>
-                                 <p class='person'>From: ${it.person}</p>
+                                 <p class='person spec'>From: ${it.person}</p>
                                  <div class='number'>
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
@@ -2358,7 +2358,7 @@
                                  <p class='ver ${color}'>Verification Status: ${it.verified} 
                                   - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p
                                  <br>
-                                 <p class='person'>From: ${it.person}</p>
+                                 <p class='person spec'>From: ${it.person}</p>
                                  <div class='number'>
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
@@ -2879,10 +2879,11 @@
 
             .city {
                 color: black;
+                position: relative;
                 padding-left: 10px;
-                padding-top: 0px;
                 margin-top:-5px;
             }
+
             .person {
                 color: #47f;
                 padding-left: 10px;
