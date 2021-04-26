@@ -2199,14 +2199,29 @@
             console.log(source);
             initMap();
             starterarr = source.slice(213,215);
-            chunk2 = source.slice(397,399);
+            chunk2 = source.slice(397,398);
             for (var i=0;i < chunk2.length; i++) {
                item = chunk2[i];
                starterarr.push(item);
             }
-            chunk3 = source.slice(230,245);
+            chunk1 = source.slice(230,232); //find verified valids
+            for (var i=0;i < chunk1.length; i++) {
+               item = chunk1[i];
+               starterarr.push(item);
+            }
+            chunk3 = source.slice(403,405);
             for (var i=0;i < chunk3.length; i++) {
                item = chunk3[i];
+               starterarr.push(item);
+            }
+            chunk4 = source.slice(235,236);
+            for (var i=0;i < chunk4.length; i++) {
+               item = chunk4[i];
+               starterarr.push(item);
+            }
+            chunk5 = source.slice(406,407);
+            for (var i=0;i < chunk5.length; i++) {
+               item = chunk5[i];
                starterarr.push(item);
             }
             console.log(starterarr);
