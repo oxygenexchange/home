@@ -2198,7 +2198,7 @@
             source.push(anotherarray);
             console.log(source);
             initMap();
-            starterarr = source.slice(213,215);
+            starterarr = source.slice(213,214);
             chunk2 = source.slice(397,398);
             for (var i=0;i < chunk2.length; i++) {
                item = chunk2[i];
@@ -2323,9 +2323,11 @@
                         <div class='row supplier'>
                             <h1 class='name'> ${it.value} </h1>
                             <p class='city'>City: ${it.city}</p>
-                            <p class='ver red'>Verification Status: Unknown since Dec 2020</p
                             <br>
                             <p class='person'>From: ${it.person}</p>
+                            <br>
+                            <p class='ver red'>Verification Status: Unknown since Dec 2020</p
+                            <br>
                             <div class='number'>
                                 <p class='special'>+91</p>
                                 <p class='restofnum'>${it.phone}</p>
@@ -2340,9 +2342,10 @@
                             <div class='row supplier'>
                                 <h1 class='name'> ${it.value} </h1>
                                 <p class='city'>City: ${it.city}</p>
-                                <p class='ver ${color}'>Verification Status: ${it.verified} - Date Unknown</p
                                 <br>
                                 <p class='person'>From: ${it.person}</p>
+                                <br>
+                                <p class='ver ${color}'>Verification Status: ${it.verified} - Date Unknown</p
                                 <div class='number'>
                                     <p class='special'>+91</p>
                                     <p class='restofnum'>${it.phone}</p>
@@ -2358,10 +2361,11 @@
                               <div class='row supplier'>
                                  <h1 class='name'> ${it.value} </h1>
                                  <p class='city'>City: ${it.city}</p>
-                                 <p class='ver ${color}'>Verification Status: ${it.verified} 
-                                 <br class='there'> - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p
                                  <br>
                                  <p class='person spec'>From: ${it.person}</p>
+                                 <br>
+                                 <p class='ver ${color}'>Verification Status: ${it.verified} 
+                                 <br class='there'> - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p>
                                  <div class='number'>
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
@@ -2375,10 +2379,11 @@
                               <div class='row supplier'>
                                  <h1 class='name'> ${it.value} </h1>
                                  <p class='city'>City: ${it.city}</p>
-                                 <p class='ver ${color}'>Verification Status: ${it.verified} 
-                                  - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p
                                  <br>
                                  <p class='person spec'>From: ${it.person}</p>
+                                 <p class='ver ${color} x1'>Verification Status: ${it.verified} 
+                                  - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p>
+                                 <br>
                                  <div class='number'>
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
@@ -2724,7 +2729,20 @@
             font-size: 0.75rem;
         }
 
+        .ver {
+            position: relative;
+            margin-left: -10px;
+            margin-right: 5px;
+            font-weight: 700;
+            top:-27%;
+         }
+
+
         @media only screen and (max-width: 1750px) {
+           .x1 {
+              margin-top: 0px;
+              padding-top: 0px;
+           }
             #topsectioncreds {
                 display: block;
             }
@@ -2880,7 +2898,7 @@
 
             .supplier {
                 width: 100%;
-                height: 18rem;
+                height: 20rem;
                 border-radius: 20px;
                 background-color: #EEEEEE;
                 margin-left: 0px;
@@ -2901,24 +2919,19 @@
                 color: black;
                 position: relative;
                 padding-left: 10px;
-                margin-top:-5px;
             }
 
             .person {
                 color: #47f;
                 padding-left: 10px;
-                padding-top: 0px;
                 position: relative;
-                top:-6%;
             }
             .spec {
                position: relative;
-               top: -15% !important;
             }
             @media only screen and (max-width: 400px) {
                .person {
                   position: relative;
-                  top:-15%;
                }
             }
             .number {
