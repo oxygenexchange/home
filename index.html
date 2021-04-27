@@ -2274,7 +2274,7 @@
                                  <p class='special'>+91</p>
                                  <p class='restofnum'>${it.phone}</p>
                               </div>
-                              <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                              <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                            </div>
                   `
                }
@@ -2292,7 +2292,7 @@
                                  <p class='special'>+91</p>
                                  <p class='restofnum'>${it.phone}</p>
                               </div>
-                              <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                              <img class='mapimg' src='google_maps.png' id='${it.labely}' class='geocoding'/>
                            </div>
                   `
                }
@@ -2313,7 +2313,7 @@
                                     <p class='special'>+91</p>
                                     <p class='restofnum'>${it.phone}</p>
                                 </div>
-                                <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                                <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                             </div>
                   `
                   }
@@ -2330,7 +2330,7 @@
                                     <p class='special'>+91</p>
                                     <p class='restofnum'>${it.phone}</p>
                                 </div>
-                                <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                                <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                             </div>
                   `
 
@@ -2352,7 +2352,7 @@
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
                                  </div>
-                                 <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                                 <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                               </div>
                                  `
                   }
@@ -2370,7 +2370,7 @@
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
                                  </div>
-                                 <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                                 <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                               </div>
                   `
                   }
@@ -2386,7 +2386,9 @@
       const geocoder = new google.maps.Geocoder();
       document.querySelectorAll('.mapimg').forEach(item => {
          item.addEventListener('click', event => {
-            val = item.value + ', ' + item.id + ', India';
+            console.log(item);
+            console.log(item.id);
+            val = item.id + ', India';
             geocodeAddress(val, geocoder, map);
          })
       })
@@ -2406,6 +2408,8 @@
             const geocoder = new google.maps.Geocoder();
             document.querySelectorAll('.mapimg').forEach(item => {
                 item.addEventListener('click', event => {
+                    console.log(item);
+                    console.log(item.value);
                     val = item.value + ', ' + item.id + ', India';
                     geocodeAddress(val, geocoder, map);
                 })
@@ -2418,6 +2422,7 @@
 
     function geocodeAddress(val, geocoder, resultsMap) {
         const address = val
+        console.log(address);
         geocoder.geocode({ address: address }, (results, status) => {
             if (status === "OK") {
                 resultsMap.setCenter(results[0].geometry.location);
@@ -2826,7 +2831,7 @@
                 font-size: 2rem;
                 padding: 15px;
                 color: #4477ff;
-                font-weight: 900;
+                font-weight: 700;
             }
             .searchbar {
                 width: 100%;
@@ -2892,7 +2897,7 @@
                top:-10%;
             }
             .red {
-               color: green;
+               color: red;
                position: relative;
                left: 20px !important;
             }
@@ -2904,7 +2909,7 @@
                 color: #47f;
                 padding-left: 10px;
                 padding-top: 20px;
-                font-weight: 900;
+                font-weight: 700;
                 font-size: 1.5rem;
             }
 
