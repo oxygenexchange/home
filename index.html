@@ -2319,26 +2319,66 @@
             color = 'y'
          }
          if (it.verified == 'No') {
-            big.innerHTML = `
-                        <div class='row supplier'>
-                            <h1 class='name'> ${it.value} </h1>
-                            <p class='city'>City: ${it.city}</p>
-                            <br>
-                            <p class='person'>From: ${it.person}</p>
-                            <br>
-                            <p class='ver red'>Verification Status: Unknown since Dec 2020</p
-                            <br>
-                            <div class='number'>
-                                <p class='special'>+91</p>
-                                <p class='restofnum'>${it.phone}</p>
-                            </div>
-                            <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
-                        </div>
-                `
+            var mq = window.matchMedia( "(max-width: 768px)" );
+            if (mq.matches) {
+                  big.innerHTML = `
+                           <div class='row supplier'>
+                              <h1 class='name'> ${it.value} </h1>
+                              <p class='city'>City: ${it.city}</p>
+                              <br>
+                              <p class='person'>From: ${it.person}</p>
+                              <br>
+                              <p class='ver red'>Verification Status: <br> Unknown since Dec 2020</p
+                              <br>
+                              <div class='number'>
+                                 <p class='special'>+91</p>
+                                 <p class='restofnum'>${it.phone}</p>
+                              </div>
+                              <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                           </div>
+                  `
+               }
+               else {
+                  big.innerHTML = `
+                           <div class='row supplier'>
+                              <h1 class='name'> ${it.value} </h1>
+                              <p class='city'>City: ${it.city}</p>
+                              <br>
+                              <p class='person'>From: ${it.person}</p>
+                              <br>
+                              <p class='ver red'>Verification Status: Unknown since Dec 2020</p
+                              <br>
+                              <div class='number'>
+                                 <p class='special'>+91</p>
+                                 <p class='restofnum'>${it.phone}</p>
+                              </div>
+                              <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                           </div>
+                  `
+               }
          }
          else {
             if (it.verifiedon == null) {
-                  big.innerHTML = `
+                  var mq = window.matchMedia( "(max-width: 768px)" );
+                  if (mq.matches) {
+                     big.innerHTML = `
+                            <div class='row supplier'>
+                                <h1 class='name'> ${it.value} </h1>
+                                <p class='city'>City: ${it.city}</p>
+                                <br>
+                                <p class='person'>From: ${it.person}</p>
+                                <br>
+                                <p class='ver ${color}'>Verification Status: ${it.verified} <br> Date Unknown</p>
+                                <div class='number'>
+                                    <p class='special'>+91</p>
+                                    <p class='restofnum'>${it.phone}</p>
+                                </div>
+                                <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
+                            </div>
+                  `
+                  }
+                  else {
+                     big.innerHTML = `
                             <div class='row supplier'>
                                 <h1 class='name'> ${it.value} </h1>
                                 <p class='city'>City: ${it.city}</p>
@@ -2353,6 +2393,8 @@
                                 <img class='mapimg' src='google_maps.png' id='${it.city}' class='geocoding'/>
                             </div>
                   `
+
+                  }
             }
             else {
                   var mq = window.matchMedia( "(max-width: 768px)" );
@@ -2364,8 +2406,8 @@
                                  <br>
                                  <p class='person spec'>From: ${it.person}</p>
                                  <br>
-                                 <p class='ver ${color}'>Verification Status: ${it.verified} 
-                                 <br class='there'> - Last on: ${formatDate(it.verifiedon.substring(0,10))}</p>
+                                 <p class='ver ${color}'>Verification Status:
+                                 <br class='there'> ${it.verified} last on: ${formatDate(it.verifiedon.substring(0,10))}</p>
                                  <div class='number'>
                                        <p class='special'>+91</p>
                                        <p class='restofnum'>${it.phone}</p>
