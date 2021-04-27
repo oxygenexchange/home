@@ -2091,6 +2091,16 @@
                minLength: 1,
                delay: 0,
                select: function(event, ui) { 
+                  var field = document.createElement('input');
+                  field.setAttribute('type', 'text');
+                  document.body.appendChild(field);
+
+                  setTimeout(function() {
+                     field.focus();
+                     setTimeout(function() {
+                        field.setAttribute('style', 'display:none;');
+                     }, 50);
+                  }, 50);
                   $(this).val('');
                   var it = ui.item;
                   console.log(it);
