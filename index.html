@@ -2270,8 +2270,7 @@
                               <p class='ver red'>Verification Status: <br> Verified last on 27/04/2021</p
                               <br>
                               <div class='number'>
-                                 <p class='special'>+91</p>
-                                 <p class='restofnum'>${it.phone}</p>
+                                 <a href='tel:+91${it.phone}' class='restofnum'>+91${it.phone}</a>
                               </div>
                               <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                            </div>
@@ -2309,8 +2308,7 @@
                                 <br>
                                 <p class='ver ${color}'>Verification Status: <br> ${it.verified} Date Unknown</p>
                                 <div class='number'>
-                                    <p class='special'>+91</p>
-                                    <p class='restofnum'>${it.phone}</p>
+                                 <a href='tel:+91${it.phone}' class='restofnum'>+91${it.phone}</a>
                                 </div>
                                 <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                             </div>
@@ -2348,8 +2346,7 @@
                                  <p class='ver ${color}'>Verification Status:
                                  <br class='there'> ${it.verified} last on: ${formatDate(it.verifiedon.substring(0,10))}</p>
                                  <div class='number'>
-                                       <p class='special'>+91</p>
-                                       <p class='restofnum'>${it.phone}</p>
+                                    <a href='tel:+91${it.phone}' class='restofnum'>+91${it.phone}</a>
                                  </div>
                                  <img class='mapimg' src='google_maps.png' id='${it.label}' class='geocoding'/>
                               </div>
@@ -2949,7 +2946,7 @@
             }
             .mapimg {
                 position: relative;
-                top: -28%;
+                top: -22%;
                 width: 2rem;
                 height: 2rem;
                 margin-left: 15px;
