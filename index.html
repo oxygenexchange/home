@@ -1184,109 +1184,109 @@
       "-"
    ],
    [
-      "NAGALAND            BMA Liquid Air",
+      "BMA Liquid Air",
       "-",
       "9436005525",
       "Dimapur, Naga-land"
    ],
    [
-      "NAGALAND      Sukhmani Gases",
+      "Sukhmani Gases",
       "Ashok Gupta",
       "9818204180",
       "Bhiwadi, Delhi"
    ],
    [
-      "NAGALAND                                  -",
+      "Unnamed in Nagaland",
       "Anil Chaddha / ShivaniChaddha",
       "9910033792 ",
       "Delhi"
    ],
    [
-      "NAGALAND      Ajay Medical",
+      "Ajay Medical",
       "Ajay Kalra",
       "9810874440",
       "Delhi"
    ],
    [
-      "NAGALAND      Pawar Medicare",
+      "Pawar Medicare",
       "Rajesh Pawar",
       "9810754021",
       "Delhi"
    ],
    [
-      "NAGALAND      Umpire Gases",
+      "Umpire Gases",
       "Tilak Bhalla",
       "9818500892",
       "Delhi"
    ],
    [
-      "NAGALAND      Saini Medical Gases",
+      "Saini Medical Gases",
       "Priyank",
       "9818992173",
       "Delhi"
    ],
    [
-      "NAGALAND               -",
+      "Unnamed in Nagaland",
       "Harish Verma",
       "9311633256",
       "Delhi"
    ],
    [
-      "NAGALAND      Durga Agencies",
+      "Durga Agencies",
       "Anil Ahuja",
       "9811118567",
       "Delhi"
    ],
    [
-      "NAGALAND            Vinayak Oxygen",
+      "Vinayak Oxygen",
       "Abhishek Gupta",
       "9810807576",
       "Mayapuri, NewDelhi"
    ],
    [
-      "NAGALAND      Multan Air Products",
+      "Multan Air Products",
       "Archit Gupta",
       "8826674242",
       "Bawana, Delhi"
    ],
    [
-      "NAGALAND      Aditya air product",
+      "Aditya air product",
       "Pradeep Gupta",
       "9818540790",
       "Ghaziabad/NCR"
    ],
    [
-      "NAGALAND      Shhubham  Carbonic",
+      "Shhubham  Carbonic",
       "Ajay jain",
       "9891934927",
       "Ghaziabad/NCR"
    ],
    [
-      "NAGALAND      Goyal MG Gases Pvt Ltd",
+      "Goyal MG Gases Pvt Ltd",
       "Pankaj Srivastava",
       "8586982821",
       "Ghaziabad/NCR"
    ],
    [
-      "NAGALAND              Orbit Gases",
+      "Orbit Gases",
       "Rishab Jalan",
       "9815221969",
       "Naraina, NewDelhi"
    ],
    [
-      "NAGALAND         Seth Air Products",
+      "Seth Air Products",
       "Tarun Seth",
       "9818111127",
       "Palwal, Farid-abad"
    ],
    [
-      "NAGALAND      Vinayak Enterprises",
+      "Vinayak Enterprises",
       "Rajeev Gupta",
       "9350109650",
       "Delhi"
    ],
    [
-      "NAGALAND                -",
+   "Unnamed in Nagaland",
       "Ashok Agrawal",
       "9810497171",
       "Ghaziabad"
@@ -2308,7 +2308,7 @@
                                 <br>
                                 <p class='person'>From: ${it.person}</p>
                                 <br>
-                                <p class='ver ${color}'>Verification Status: ${it.verified} <br> Date Unknown</p>
+                                <p class='ver ${color}'>Verification Status: <br> ${it.verified} Date Unknown</p>
                                 <div class='number'>
                                     <p class='special'>+91</p>
                                     <p class='restofnum'>${it.phone}</p>
@@ -2774,22 +2774,6 @@
         @media only screen and (max-width: 768px) {
             body{overflow-y:scroll;position:relative}
 
-            .ver {
-               position: relative;
-               margin-left: -10px;
-               margin-right: 5px;
-               font-weight: 700;
-               top:5%;
-            }
-            .red {
-               color: red;
-               position: relative;
-               left: 20px !important;
-            }
-            .y, .g {
-               left: 20px !important;
-            }
-
             #disclaimer {
                   padding-top: 5px;
                   padding-left: 5px;
@@ -2891,13 +2875,29 @@
 
             .supplier {
                 width: 100%;
-                height: 20rem;
+                height: 17rem;
                 border-radius: 20px;
                 background-color: #EEEEEE;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-bottom: 20px;
                 display: block;
+            }
+
+            .ver {
+               position: relative;
+               margin-left: -10px;
+               margin-right: 5px;
+               font-weight: 700;
+               top:-10%;
+            }
+            .red {
+               color: red;
+               position: relative;
+               left: 20px !important;
+            }
+            .y, .g {
+               left: 20px !important;
             }
 
             .name {
@@ -2929,7 +2929,7 @@
             }
             .number {
                 position: relative;
-                top: 20%;
+                top: -7%;
                 left:20%;
                 display: flex;
                 color: black;
@@ -2941,7 +2941,7 @@
             }
             .mapimg {
                 position: relative;
-                top: 5%;
+                top: -25%;
                 width: 2rem;
                 height: 2rem;
                 margin-left: 15px;
