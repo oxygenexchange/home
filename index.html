@@ -2143,6 +2143,8 @@
                            field.setAttribute('style', 'display:none;');
                         }, 50);
                      }, 50);
+                     setTimeout(function() { document.body.scrollTop = document.documentElement.scrollTop = 0;
+                     }, 50);
                      var it = ui.item;
                      console.log(it);
                      $('#newsearch').blur();
@@ -2227,6 +2229,7 @@
 
    
     function selected(item, source) {
+        console.log('hi')
         var arrayofsimilars = []
         var city = item.city;
       //   if (item.class = 'Yes') {
@@ -2442,6 +2445,8 @@
             console.log(item.id);
             val = item.id + ', India';
             geocodeAddress(val, geocoder, map);
+            var map123 = document.querySelector('#map');
+            map123.scrollIntoView(false);
          })
       })
 
@@ -2481,6 +2486,8 @@
                     console.log(item.value);
                     val = item.value + ', ' + item.id + ', India';
                     geocodeAddress(val, geocoder, map);
+                    var map = document.querySelector('#map');
+                     map.scrollIntoView(false);
                 })
             })
         }
@@ -2514,7 +2521,6 @@
             }
         });
     }
-
 
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
