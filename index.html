@@ -2036,6 +2036,8 @@
 
     document.addEventListener("DOMContentLoaded", () => {
          console.log('hi');
+         setTimeout(function() { document.body.scrollTop = document.documentElement.scrollTop = 0;
+                     }, 50);
          $.getJSON('https://life-api.coronasafe.network/data/oxygen.json', function(data) {
             var source = [];
             console.log(data.data);
