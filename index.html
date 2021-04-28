@@ -2033,13 +2033,8 @@
         return op; 
     }
 
-    function getlength(number) {
-      return number.toString().length;
-   }
 
     document.addEventListener("DOMContentLoaded", () => {
-         setTimeout(function() { document.body.scrollTop = document.documentElement.scrollTop = 0;
-                     }, 150);
          console.log('hi');
          $.getJSON('https://life-api.coronasafe.network/data/oxygen.json', function(data) {
             var source = [];
@@ -2055,7 +2050,7 @@
                 var phone = item.phone1;
                 var verified = item.verificationStatus;
                 var verifiedon = item.lastVerifiedOn;
-                if (value == null || city == null || phone == null || getlength(phone) !== 10) {
+                if (value == null || city == null || phone == null) {
                     console.log('invalid');
                 }
                 else {
@@ -2088,20 +2083,18 @@
             }
             var labels = []
             for (var i=0;i< realarray.length; i++) {
-                  if (getlength(realarray[i][2].trim()) == 10) {
-                     source.push({
-                        "value": realarray[i][0].trim(),
-                        "label": realarray[i][0].trim() + ', ' + realarray[i][3],
-                        "person": realarray[i][1].trim(),
-                        "city": realarray[i][3].trim(),
-                        "phone": realarray[i][2].trim(),
-                        "verified": 'No',
-                        "verifiedon": null,
-                        "class": 'No'
-                     });
-                     cities.push(realarray[i][3].trim());
-                     labels.push(realarray[i][0].trim() + ', ' + realarray[i][3]);
-                  }
+                  source.push({
+                     "value": realarray[i][0].trim(),
+                     "label": realarray[i][0].trim() + ', ' + realarray[i][3],
+                     "person": realarray[i][1].trim(),
+                     "city": realarray[i][3].trim(),
+                     "phone": realarray[i][2].trim(),
+                     "verified": 'No',
+                     "verifiedon": null,
+                     "class": 'No'
+                  });
+                  cities.push(realarray[i][3].trim());
+                  labels.push(realarray[i][0].trim() + ', ' + realarray[i][3]);
             }
             for (var i=0;i< source.length; i++) {
                   item = source[i];
@@ -2149,8 +2142,6 @@
                         setTimeout(function() {
                            field.setAttribute('style', 'display:none;');
                         }, 50);
-                     }, 50);
-                     setTimeout(function() { document.body.scrollTop = document.documentElement.scrollTop = 0;
                      }, 50);
                      var it = ui.item;
                      console.log(it);
@@ -2236,9 +2227,12 @@
 
    
     function selected(item, source) {
-        console.log('hi')
         var arrayofsimilars = []
         var city = item.city;
+      //   if (item.class = 'Yes') {
+      //      console.log('city');
+      //   }
+      //   else {
         arrayofsimilars.push(item);
         for (var i=0;i < source.length; i++) {
             var cityrepeat = source[i].city;
@@ -2448,8 +2442,6 @@
             console.log(item.id);
             val = item.id + ', India';
             geocodeAddress(val, geocoder, map);
-            var map123 = document.querySelector('#map');
-            map123.scrollIntoView(false);
          })
       })
 
@@ -2458,6 +2450,9 @@
       var x = img.querySelector('.mapimg')
       console.log(x);
       eventFire(x, 'click');
+      if (istherecity) {
+         img.style.display = 'none';
+      }
       removecities();
     }
 
@@ -2466,10 +2461,9 @@
        for (var i=0; i < children.length; i++) {
           child = children[i];
           y = child.querySelector('.restofnum').innerHTML;
+          console.log(y);
           if (y == 'null' || y == '+91null') {
             child.style.display = 'none';
-            console.log(child.querySelector('.restofnum'));
-            console.log('done')
           }
        }
     }
@@ -2487,8 +2481,6 @@
                     console.log(item.value);
                     val = item.value + ', ' + item.id + ', India';
                     geocodeAddress(val, geocoder, map);
-                    var map = document.querySelector('#map');
-                     map.scrollIntoView(false);
                 })
             })
         }
@@ -2522,7 +2514,6 @@
             }
         });
     }
-
 
 
     </script>
@@ -2698,8 +2689,6 @@
         }
         .searchcontainer {
             position: relative;
-            margin-left: 5px;
-            width:90%;
         }
 
         #creds {
@@ -2714,7 +2703,7 @@
             border: none;
             background-color: white;
             height:4rem;
-            padding-left: 40px;
+            padding-left: 2rem;
             border-radius: 1rem;
             box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 25%);
         }
@@ -2929,13 +2918,12 @@
             }
             #newsearch {
                   font-size: 1rem;
-                  width:110%;
+                  width: 100%;
                   border: none;
-                  margin-left: -2px;
-                  margin-right: 5px;
+                  margin-inline: auto auto;
                   background-color: white;
                   height:4rem;
-                  border-radius: 0.5rem;
+                  border-radius: 1rem;
                   box-shadow: 0.5 0.5rem 1rem rgb(0 0 0 / 25%);
                   -webkit-appearance: none;
             }
@@ -3084,11 +3072,10 @@
                 <div class='row topsection'>
                     <h1 id='header'>Oxygen<div id='exchange'> Exchange</div></h1>
                 </div>
-                <div class='row searchbar'>
+                <div class='searchbar'>
                     <div class='searchcontainer'>
                         <input id="newsearch" style="font-family:Inter, FontAwesome"placeholder="&#xF002;    Search for a City or State">
                     </div>
-                    <img id='search' src='search_icon_152764.png'/>
                 </div>
                 <div id="floating-panel">
                     <input id="address" type="textbox" value="Sydney, NSW" />
