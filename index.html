@@ -2036,8 +2036,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
          console.log('hi');
-         setTimeout(function() { document.body.scrollTop = document.documentElement.scrollTop = 0;
-                     }, 50);
          $.getJSON('https://life-api.coronasafe.network/data/oxygen.json', function(data) {
             var source = [];
             console.log(data.data);
@@ -2145,8 +2143,6 @@
                            field.setAttribute('style', 'display:none;');
                         }, 50);
                      }, 50);
-                     setTimeout(function() { document.body.scrollTop = document.documentElement.scrollTop = 0;
-                     }, 50);
                      var it = ui.item;
                      console.log(it);
                      $('#newsearch').blur();
@@ -2231,7 +2227,6 @@
 
    
     function selected(item, source) {
-        console.log('hi')
         var arrayofsimilars = []
         var city = item.city;
       //   if (item.class = 'Yes') {
@@ -2447,8 +2442,6 @@
             console.log(item.id);
             val = item.id + ', India';
             geocodeAddress(val, geocoder, map);
-            var map123 = document.querySelector('#map');
-            map123.scrollIntoView(false);
          })
       })
 
@@ -2488,8 +2481,6 @@
                     console.log(item.value);
                     val = item.value + ', ' + item.id + ', India';
                     geocodeAddress(val, geocoder, map);
-                    var map = document.querySelector('#map');
-                     map.scrollIntoView(false);
                 })
             })
         }
@@ -2523,6 +2514,7 @@
             }
         });
     }
+
 
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -2702,9 +2694,9 @@
         }
 
         #creds {
-            padding-left: 35px;
+            margin-block: 2rem;
+            margin-left: 1rem;
             position: relative;
-            padding-top: 2rem;
             font-weight: 700;
         }
         #newsearch {
@@ -2720,11 +2712,10 @@
 
         #crowdsourced {
             position: relative;
-            padding-top: 2rem;
-            padding-left: 100px;
+            margin-inline: 1rem 2rem;
             color: #47f;
             font-weight: 700;
-            width:35rem;
+            width: 100%;
         }
 
         .name {
@@ -2824,12 +2815,10 @@
 
             #crowdsourced {
                 position: relative;
-                padding-top: 2rem;
-                margin-left: 17px;
-                padding-left: 17px;
+                margin-inline: 1rem 2rem;
                 color: #47f;
                 font-weight: 700;
-                width:35rem;
+                width: 100%;
             }
             .ver {
                position: relative;
@@ -2956,20 +2945,18 @@
 
             #creds {
                font-weight: normal;
-                display: none;
+               display: none;
             }
+            
             #crowdsourced {
                 position: relative;
-                padding-top: 15px;
                 color: #47f;
                 font-weight: 700;
                 font-size: 0.75rem;
-                width: 17rem;
-                text-align: left;
+                width: 100%;
+                text-align: center;
                 display: inline-block;
-                margin: 0 auto;
-                margin-left: 0;
-                padding-bottom: 15px;
+                margin-inline: 1rem;
             }
 
             .supplier {
