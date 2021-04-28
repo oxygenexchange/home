@@ -21,7 +21,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101312803);</script>
-        <script async src="//static.getclicky.com/js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJGTK5Y9VC"></script>
         <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -1195,12 +1195,6 @@
       "Bhiwadi, Delhi"
    ],
    [
-      "Unnamed in Nagaland",
-      "Anil Chaddha / ShivaniChaddha",
-      "9910033792 ",
-      "Delhi"
-   ],
-   [
       "Ajay Medical",
       "Ajay Kalra",
       "9810874440",
@@ -1225,12 +1219,6 @@
       "Delhi"
    ],
    [
-      "Unnamed in Nagaland",
-      "Harish Verma",
-      "9311633256",
-      "Delhi"
-   ],
-   [
       "Durga Agencies",
       "Anil Ahuja",
       "9811118567",
@@ -1240,13 +1228,7 @@
       "Vinayak Oxygen",
       "Abhishek Gupta",
       "9810807576",
-      "Mayapuri, NewDelhi"
-   ],
-   [
-      "Multan Air Products",
-      "Archit Gupta",
-      "8826674242",
-      "Bawana, Delhi"
+      "Mayapuri, New Delhi"
    ],
    [
       "Aditya air product",
@@ -1270,7 +1252,7 @@
       "Orbit Gases",
       "Rishab Jalan",
       "9815221969",
-      "Naraina, NewDelhi"
+      "Naraina, New Delhi"
    ],
    [
       "Seth Air Products",
@@ -1283,12 +1265,6 @@
       "Rajeev Gupta",
       "9350109650",
       "Delhi"
-   ],
-   [
-   "Unnamed in Nagaland",
-      "Ashok Agrawal",
-      "9810497171",
-      "Ghaziabad"
    ],
    [
       "ORISSA        Anand IndustrialGasses Pvt. Ltd.",
@@ -2059,63 +2035,9 @@
 
 
     document.addEventListener("DOMContentLoaded", () => {
-         console.log(realarray);
-         var mq = window.matchMedia( "(max-width: 768px)" );
-         var map = document.createElement('div');
-         var left = document.querySelector('.leftbot');
-         var right = document.querySelector('.right');
-         map.id = 'map'
-         if (mq.matches) {
-               right.append(map);
-         }
-         else {
-               left.append(map);
-         }
-         var source = [];
-         var labels = []
-         for (var i=0;i< realarray.length; i++) {
-               source.push({
-                  "value": realarray[i][0].trim(),
-                  "label": realarray[i][0].trim() + ', ' + realarray[i][3],
-                  "person": realarray[i][1].trim(),
-                  "city": realarray[i][3].trim(),
-                  "phone": realarray[i][2].trim(),
-                  "verified": 'No',
-                  "verifiedon": null
-               });
-               labels.push(realarray[i][0].trim() + ', ' + realarray[i][3]);
-         }
-         console.log(source);
-         $('#newsearch').autocomplete({
-               source: source,
-               minLength: 1,
-               delay: 0,
-               select: function(event, ui) { 
-                  var field = document.createElement('input');
-                  field.setAttribute('type', 'text');
-                  document.body.appendChild(field);
-
-                  setTimeout(function() {
-                     field.focus();
-                     setTimeout(function() {
-                        field.setAttribute('style', 'display:none;');
-                     }, 50);
-                  }, 50);
-                  $(this).val('');
-                  var it = ui.item;
-                  console.log(it);
-                  $('#newsearch').blur();
-                  selected(it, source);
-                  return false;
-               }
-         }).focus(function () {
-               $(this).autocomplete("search", "");
-         });
-         $('#newsearch').blur(function() { 
-               $(this).val('');
-         });
          console.log('hi');
          $.getJSON('https://life-api.coronasafe.network/data/oxygen.json', function(data) {
+            var source = [];
             console.log(data.data);
             var anotherarray = [];
             var counter = 0;
@@ -2140,53 +2062,177 @@
                         "city": city,
                         "phone": phone,
                         "verified": verified,
-                        "verifiedon": verifiedon
+                        "verifiedon": verifiedon,
+                        "class": 'No'
                     });
                 }
             }
-            console.log(counter);
             source.push(anotherarray);
+            console.log(realarray);
+            var mq = window.matchMedia( "(max-width: 768px)" );
+            var map = document.createElement('div');
+            var left = document.querySelector('.leftbot');
+            var right = document.querySelector('.right');
+            var cities = []
+            map.id = 'map'
+            if (mq.matches) {
+                  right.append(map);
+            }
+            else {
+                  left.append(map);
+            }
+            var labels = []
+            for (var i=0;i< realarray.length; i++) {
+                  source.push({
+                     "value": realarray[i][0].trim(),
+                     "label": realarray[i][0].trim() + ', ' + realarray[i][3],
+                     "person": realarray[i][1].trim(),
+                     "city": realarray[i][3].trim(),
+                     "phone": realarray[i][2].trim(),
+                     "verified": 'No',
+                     "verifiedon": null,
+                     "class": 'No'
+                  });
+                  cities.push(realarray[i][3].trim());
+                  labels.push(realarray[i][0].trim() + ', ' + realarray[i][3]);
+            }
+            for (var i=0;i< source.length; i++) {
+                  item = source[i];
+                  cities.push(item.city);
+            }
+
+            var realcities = [];
+            $.each(cities, function(i, el){
+               if($.inArray(el, realcities) === -1) realcities.push(
+                  el
+               );
+            });
+            
+            for (var i=0;i< realcities.length; i++) {
+               city = realcities[i];
+               if (city == "" || city == undefined) {
+                  console.log('no');
+               }
+               else {
+                  source.push({
+                        "value": city,
+                        "label": "Region: " + city,
+                        "person": null,
+                        "city": city,
+                        "phone": null,
+                        "verified": null,
+                        "verifiedon": null,
+                        "class": 'Yes'
+                  });
+               }
+            }
+            console.log(realcities);
             console.log(source);
+            $('#newsearch').autocomplete({
+                  source: source.reverse(),
+                  minLength: 1,
+                  delay: 0,
+                  select: function(event, ui) { 
+                     var field = document.createElement('input');
+                     field.setAttribute('type', 'text');
+                     document.body.appendChild(field);
+
+                     setTimeout(function() {
+                        field.focus();
+                        setTimeout(function() {
+                           field.setAttribute('style', 'display:none;');
+                        }, 50);
+                     }, 50);
+                     var it = ui.item;
+                     console.log(it);
+                     $('#newsearch').blur();
+                     selected(it, source);
+                     return false;
+                  }
+            }).focus(function () {
+                  $(this).autocomplete("search", "");
+            }).data("ui-autocomplete")._renderItem = function( ul, item ) {
+
+               return $("<li></li>")
+               .addClass(item.class) //item based custom class to li here
+               .append(item.label)
+               .data("ui-autocomplete-item", item)
+               .appendTo(ul); 
+            }
+            $('#newsearch').blur(function() { 
+                  $(this).val('');
+            });
             initMap();
-            starterarr = source.slice(208,209);
-            chunk2 = source.slice(312,313);
-            for (var i=0;i < chunk2.length; i++) {
-               item = chunk2[i];
-               starterarr.push(item);
+            var starterarr = []
+            var city = 'Delhi';
+            for (var i=0;i < source.length; i++) {
+                  var cityrepeat = source[i].city;
+                  if (item.phone == source[i].phone) {
+                     console.log('duplicate');
+                  }
+                  else {
+                     try {
+                        if ((city.trim() == cityrepeat.trim()) || (cityrepeat.replace(' ','').includes(city.replace(' ','')))) {
+                           starterarr.push(source[i]);
+                        }
+                     }
+                     catch {
+                        console.log(item);
+                     }
+                  }
             }
-            chunk1 = source.slice(230,232); //find verified valids
-            for (var i=0;i < chunk1.length; i++) {
-               item = chunk1[i];
-               starterarr.push(item);
-            }
-            chunk3 = source.slice(19,20);
-            for (var i=0;i < chunk3.length; i++) {
-               item = chunk3[i];
-               starterarr.push(item);
-            }
-            chunk6 = source.slice(343,344);
-            for (var i=0;i < chunk6.length; i++) {
-               item = chunk6[i];
-               starterarr.push(item);
-            }
-            chunk4 = source.slice(26,27);
-            for (var i=0;i < chunk4.length; i++) {
-               item = chunk4[i];
-               starterarr.push(item);
-            }
-            chunk5 = source.slice(406,407);
-            for (var i=0;i < chunk5.length; i++) {
-               item = chunk5[i];
-               starterarr.push(item);
+            city = 'Gurgaon';
+            for (var i=0;i < source.length; i++) {
+                  var cityrepeat = source[i].city;
+                  if (item.phone == source[i].phone) {
+                     console.log('duplicate');
+                  }
+                  else {
+                     try {
+                        if ((city.trim() == cityrepeat.trim()) || (cityrepeat.replace(' ','').includes(city.replace(' ','')))) {
+                           starterarr.push(source[i]);
+                        }
+                     }
+                     catch {
+                        console.log(item);
+                     }
+                  }
             }
             console.log(starterarr);
-            makesimilars(starterarr);
+            realstarterarr = source.slice(208,209);
+            chunk2 = starterarr.slice(10,14);
+            for (var i=0;i < chunk2.length; i++) {
+               item = chunk2[i];
+               realstarterarr.push(item);
+            }
+            chunk1 = starterarr.slice(76,80); //find verified valids
+            for (var i=0;i < chunk1.length; i++) {
+               item = chunk1[i];
+               realstarterarr.push(item);
+            }
+            chunk3 = starterarr.slice(14,18);
+            for (var i=0;i < chunk3.length; i++) {
+               item = chunk3[i];
+               realstarterarr.push(item);
+            }
+            chunk6 = starterarr.slice(80,83);
+            for (var i=0;i < chunk6.length; i++) {
+               item = chunk6[i];
+               realstarterarr.push(item);
+            }
+            console.log(realstarterarr);
+            makesimilars(realstarterarr, false, 'no');
          });
     })
 
+   
     function selected(item, source) {
         var arrayofsimilars = []
         var city = item.city;
+      //   if (item.class = 'Yes') {
+      //      console.log('city');
+      //   }
+      //   else {
         arrayofsimilars.push(item);
         for (var i=0;i < source.length; i++) {
             var cityrepeat = source[i].city;
@@ -2195,13 +2241,8 @@
             }
             else {
                 try {
-                    if (city.trim() == cityrepeat.trim()) {
+                    if ((city.trim() == cityrepeat.trim()) || (cityrepeat.replace(' ','').includes(city.replace(' ','')))) {
                         arrayofsimilars.push(source[i]);
-                    }
-                    else {
-                        if (commonsubstring(item.label, source[i].label)) {
-                            arrayofsimilars.push(source[i]);
-                        }
                     }
                 }
                 catch {
@@ -2209,8 +2250,12 @@
                 }
             }
         }
-
-        makesimilars(arrayofsimilars);
+        if (item.class = 'Yes') {
+         makesimilars(arrayofsimilars, true, city);
+        }
+        else {
+           makesimilars(arrayofsimilars, false, 'no');
+        }
     }
 
     function commonsubstring(a,b) {
@@ -2254,7 +2299,7 @@
         return day+'/'+month+'/'+year;
     }
 
-    function makesimilars(arr) {
+    function makesimilars(arr, istherecity, city) {
       console.log(arr);
       var div = document.querySelector('.rest');
       div.innerHTML = '';
@@ -2387,7 +2432,7 @@
          div.append(big);
       }
       const map = new google.maps.Map(document.getElementById("map"), {
-         zoom: 13,
+         zoom: 10,
          center: { lat: -34.397, lng: 150.644 },
       });
       const geocoder = new google.maps.Geocoder();
@@ -2399,11 +2444,28 @@
             geocodeAddress(val, geocoder, map);
          })
       })
+
       var img = document.querySelector('.rest').childNodes[0];
       console.log(img);
       var x = img.querySelector('.mapimg')
       console.log(x);
       eventFire(x, 'click');
+      if (istherecity) {
+         img.style.display = 'none';
+      }
+      removecities();
+    }
+
+    function removecities() {
+       var children = document.querySelector('.rest').childNodes;
+       for (var i=0; i < children.length; i++) {
+          child = children[i];
+          y = child.querySelector('.restofnum').innerHTML;
+          console.log(y);
+          if (y == 'null' || y == '+91null') {
+            child.style.display = 'none';
+          }
+       }
     }
 
     function initMap() {
@@ -2452,6 +2514,7 @@
             }
         });
     }
+
 
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -3023,7 +3086,7 @@
                         Developed by Keeyan Mukherjee
                     </p>
                     <p id='crowdsourced'>
-                        Click on any of the searched suppliers and recieve more details about them, and other similar suppliers.
+                        Search for a region or a supplier to see the various suppliers in the chosen region, or near the chosen supplier.
                     </p>
                 </div>
                 <div class='rest'>
