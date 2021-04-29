@@ -2041,6 +2041,19 @@
     document.addEventListener("DOMContentLoaded", () => {
          console.log('hi');
          $.getJSON('https://life-api.coronasafe.network/data/oxygen.json', function(data) {
+            var x = document.querySelector('#now');
+            x.onclick = function() {
+               const map = new google.maps.Map(document.getElementById("map"), {
+                  zoom: 10,
+                  center: { lat: 28.344456, lng: 77.308250},
+               });
+               new google.maps.Marker({
+                    map: map,
+                    position: { lat: 28.344456, lng: 77.308250},
+               });
+               var map123 = document.querySelector('#map');
+               map123.scrollIntoView(false);
+            }
             var source = [];
             console.log(data.data);
             var anotherarray = [];
@@ -2523,8 +2536,6 @@
         });
     }
 
-
-
     </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -2700,6 +2711,7 @@
         }
 
         #creds {
+            display: none;
             margin-block: 2rem;
             margin-left: 1rem;
             position: relative;
@@ -2716,12 +2728,28 @@
             box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 25%);
         }
 
+        #topsectioncreds {
+             display: block;
+         }
+
         #crowdsourced {
             position: relative;
-            margin-inline: 1rem 2rem;
-            color: #47f;
+            left: 1%;
+            margin-top: 10px;
+            color: white;
+            background-color: #f44 ;
+            border-radius: 1rem;
             font-weight: 700;
-            width: 100%;
+            width:95%;
+        }
+
+        #text123 {
+           padding: 15px;
+        }
+
+        #now {
+           font-weight: 900;
+           text-decoration: underline;
         }
 
         .name {
@@ -2821,11 +2849,13 @@
 
             #crowdsourced {
                 position: relative;
-                margin-inline: 1rem 2rem;
-                color: #47f;
+                padding-top: 2rem;
+                margin-left: 17px;
+                padding-left: 17px;
                 font-weight: 700;
-                width: 100%;
+                width:35rem;
             }
+            
             .ver {
                position: relative;
                font-weight: 700;
@@ -2953,13 +2983,16 @@
             
             #crowdsourced {
                 position: relative;
-                color: #47f;
+                padding-top: 15px;
                 font-weight: 700;
                 font-size: 0.75rem;
-                width: 100%;
-                text-align: center;
+                width: 92%;
+                text-align: left;
                 display: inline-block;
-                margin: 1rem;
+                margin: 0 auto;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding-bottom: 15px;
             }
 
             .supplier {
@@ -3094,9 +3127,9 @@
                         Designed by Akshat Sethi <br>
                         Developed by Keeyan Mukherjee
                     </p>
-                    <p id='crowdsourced'>
-                        Search for a region or a supplier to see the various suppliers in the chosen region, or near the chosen supplier.
-                    </p>
+                    <div id='crowdsourced'>
+                     <div id='text123'>If you require oxygen cylinders and you live in Delhi NCR, there is an oxygen plant in Faridabad which is filling cylinders at Rs. 240/- only. The plant has an abundance of oxygen and does not require you to wait. They are filling 1000 cylinders in one go. Click <a id='now'>this</a> to see the location on this map or this to see it on Google Maps.</div>
+                    </div>
                 </div>
                 <div class='rest'>
                 </div>
